@@ -9,6 +9,8 @@ socket是一种`打开—读/写—关闭`模式的实现，服务器和客户�
 # TPC 实现
 
 ```go
+// Server端
+
 package main
 
 import (
@@ -17,12 +19,15 @@ import (
 	"net"
 )
 
+const Address = "127.0.0.1:9090"
+
 func main() {
 	// 1.监听本地的9090端口
-	listener, err := net.Listen("tcp", ":9090")
+	listener, err := net.Listen("tcp", Address)
 	if err != nil {
 		log.Fatalf("faild to listen:%v", err)
 	}
+	log.Printf("listen to %s\n",Address)
 
 	for {
 		// 2.接收来自客户端的请求连接
@@ -41,21 +46,53 @@ func process(conn net.Conn) {
 	defer conn.Close()
 	for {
 		// 2.读取请求连接数据
-		var buf []byte
-		_,err := conn.Read(buf)
+		buf := make([]byte,128)
+		n,err := conn.Read(buf)
 		if err != nil {
 			log.Printf("read from conn failed,err:%v\n", err)
 			break
 		}
-		fmt.Println("收到的数据:%v\n",string(buf))
-		
+		fmt.Printf("收到数据:%s\n",string(buf[:n]))
+
 		// 3.向请求连接发送数据
-        _,err = conn.Write([]byte("ok"))
+		_,err = conn.Write([]byte("ok"))
 		if err != nil {
-            log.Printf("write data to conn failed,err:%v",err)
-            break
+			log.Printf("write data to conn failed,err:%v",err)
+			break
 		}
 	}
+}
+```
 
+```go
+// Client端
+package main
+
+import (
+	"fmt"
+	"log"
+	"net"
+)
+
+func main() {
+	// 1.与Server端建立socket连接
+	conn, err := net.Dial("tcp", "127.0.0.1:9090")
+	if err != nil {
+		log.Fatalf("connect server failed,err:%v\n", err)
+	}
+
+	// 2.向server端发送数据
+	_, err = conn.Write([]byte("hello"))
+	if err != nil {
+		log.Fatalf("send data failed,err:%v\n", err)
+	}
+
+	// 3.从服务端接收数据
+	buf := make([]byte,128)
+	n, err := conn.Read(buf)
+	if err != nil {
+		log.Fatalf("read data failed,err:%v\n", err)
+	}
+	fmt.Printf("收到数据:%s",string(buf[:n]))
 }
 ```
