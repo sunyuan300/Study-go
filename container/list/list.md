@@ -1,7 +1,7 @@
 # List
 
 List是一个双向链表,可以被当作***栈***或***队列***使用.
-![](list.png)
+![list](list.png)
 
 ```go
 // Element: 链表的节点结构
