@@ -1,3 +1,22 @@
+# 事务的实现原理
+- 原子性：通过undo log来实现。
+- 持久性：通过redo log来实现。
+- **隔离性**：通过读写锁+MVCC来实现。
+- 一致性：通过原子性、持久性、隔离性来实现。
+
+# 隔离级别
+![](level.png)
+- RU：不加锁
+- RC：
+  - 普通select都是读快照，底层使用MVCC实现。
+  - 加锁的select都使用行锁，因为没有Gap Lock
+  - 外键约束检查和重复键检查会使用间隙锁。
+- RR：
+  - 普通select都是读快照，底层使用MVCC实现。
+  - 加锁的select(select...in share mode/select...for update)和update、delete等语句使用***当前读***。底层使用行锁、间隙锁、临键锁。
+- S：
+  - 所有select语句都会隐式转换为select...in share mode，会和update、delete互斥。
+
 # 事务常见问题
 ### users
 | id | name | age |
@@ -5,7 +24,7 @@
 | 1 | Joe | 20 |
 | 2 | Jill | 25 |
 
-**并发事务**情况下，***读操作***可能存在的三类问题：
+**事务并发**情况下，***读操作***可能存在的三类问题：
 - **脏读**：当一个事务(A)允许读取另外一个事务(B)修改但未提交的数据时，就可能发生脏读（dirty reads）。下面这个例子中，事务2回滚后就没有id是1，age是21的数据行了。
 
     | 时间 | 事务A | 事务B |
@@ -39,8 +58,7 @@
     |  T3  | SELECT * FROM users WHERE age BETWEEN 10 AND 30;<br>/* will read 20，25，27 */|  |
 
 
-# 隔离级别
-![](level.png)
+
 
 **读未提交**：事务(A)可以看到其他事务(B)"***尚未提交***"的修改。
 
@@ -90,6 +108,13 @@ InnoDB 实现了以下两种表锁：
   - 共享锁(S)：select * from table_name where ... lock in share mode。其他事务可以对该记录添加共享锁，也可以查询该记录，如果当前事务需要更新该记录，则很有可能造成死锁。但会阻塞其他事务对该记录添加排他锁。
   - 排他锁(X)：select * from table_name where ... for update。其他事务**可以查询该记录**，但会阻塞对该记录添加共享锁或排他锁。
 
+
+# LBCC&MVCC数据读一致性方案
+## LBCC
+ 要保证前后两次读取数据一致，那么读取数据候，锁定要操作的数据，不允许其它的事务修改就行了。这种方案叫做**基于锁的并发控制**Lock Based Concurrency Control（LBCC）。 如果仅仅是基于锁来实现事务隔离，一个事务读取的时候不允许其它事务修改，就意味着不支持并发的读写操作，而大多数应用都是读多写少，这样会极大地影响操作数据的效率。
+
+## MVCC
+让一个事务前后两次读取的数据保持一致，可以在修改数据时给它建立一个快照，后面再读取这个快照就行了。这种方案叫做**多版本的并发控制**Mutil Version Concurrency Control(MVCC)。
 
 ## Reference
 [一张图彻底搞懂 MySQL 的锁机制](https://learnku.com/articles/39212?order_by=vote_count&)
