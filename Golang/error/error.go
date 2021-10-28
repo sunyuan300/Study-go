@@ -54,4 +54,8 @@ func main() {
 		fmt.Println("Struct Type Error")
 	}
 	// Output: Struct Type Error
+
+	// eg:3
+	fmt.Println(errors.New("EOF") == errors.New("EOF"))
+	//Output: false
 }
