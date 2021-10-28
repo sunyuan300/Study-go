@@ -138,6 +138,8 @@ func f() error {
 就是定义一些包级别的错误变量，然后在调用的时候外部包可以直接对比变量进行判定，在标准库当中大量的使用了这种方式，例如`io`库中定义的错误。
 
 这种错误处理方式是，将`错误的值`暴露给了外部，这样会导致在做重构或者升级的时候很麻烦，并且这种方式包含的错误信息会十分的有限。
+
+结论：需要提供给他人使用的pkg,尽量避免Sentinel Error；针对业务代码，可以使用Sentinel Error。
 ```go
 // EOF is the error returned by Read when no more input is available.
 // Functions should return EOF only to signal a graceful end of input.
