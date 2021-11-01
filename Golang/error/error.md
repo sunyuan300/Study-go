@@ -164,12 +164,14 @@ if errors.Is(err, io.EOF){
 ```
 
 ### error types(自定义错误)
-自定义数据类型并实现`error`接口，然后在外部通过类型断言来判断错误类型。这种方式相对哨兵模式，可以包含更加丰富的信息，但同样也是将`错误的类型`暴露给了外部，例如标准库中的`os.PathError`。
+自定义数据类型并实现`error`接口，然后在外部通过**类型断言**来判断错误类型。这种方式相对哨兵模式，可以包含更加丰富的信息，但同样也是将`错误的类型`暴露给了外部，`这种模型会导致和调用者产生强耦合，从而导致API变得脆弱`，例如标准库中的`os.PathError`。
+
+结论:避免错误类型，或者至少避免将它们作为公共API的一部分。
 ```go
 type MyStruct struct {
 	s string
-    name string
-    path string
+	name string
+	path string
 }
 
 
@@ -177,16 +179,19 @@ type MyStruct struct {
 // 使用的时候
 func f() {
     switch err.(type) {
+        case nil:
+        	//
         case *MyStruct:
-        // ...
+            // ...
         case others:
-        // ...
+            // ...
     }
 }
 ```
 
 ### Opaque errors
 这种方式最大的特点是只返回错误，但不暴露错误类型，错误的类型判断通过包暴露的API接进行判断。这种方式我们可以断言错误`实现了特定的行为`，而不是断言错误是特定的类型或值。同时可以减少API的暴露，后续处理比较灵活，这个一般用在公共库比较好。
+
 ```go
 type temporary interface {
 	Temporary() bool
