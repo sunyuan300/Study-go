@@ -248,20 +248,23 @@ func c() error {
 ```
 输出：
 ```go
+// 自底向上输出
 err: xxx
 test
 main.a
-        /home/ll/project/Go-000/Week02/blog/wrap.go:14
+D:/Go_Code/src/stdlib_learn/Golang/error/wrap.go:14
 main.b
-        /home/ll/project/Go-000/Week02/blog/wrap.go:18
+D:/Go_Code/src/stdlib_learn/Golang/error/wrap.go:18
 main.c
-        /home/ll/project/Go-000/Week02/blog/wrap.go:22
+D:/Go_Code/src/stdlib_learn/Golang/error/wrap.go:22
 main.main
-        /home/ll/project/Go-000/Week02/blog/wrap.go:10
+D:/Go_Code/src/stdlib_learn/Golang/error/wrap.go:10
 runtime.main
-        /usr/local/go/src/runtime/proc.go:204
+D:/Go/src/runtime/proc.go:204
 runtime.goexit
-        /usr/local/go/src/runtime/asm_amd64.s:1374
+D:/Go/src/runtime/asm_amd64.s:1374
+Process finished with exit code 0
+
 ```
 
 ## Wrap最佳实践(pkg/errors)
