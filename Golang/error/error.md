@@ -264,6 +264,33 @@ runtime.goexit
         /usr/local/go/src/runtime/asm_amd64.s:1374
 ```
 
+## Wrap最佳实践(pkg/errors)
+- 在应用代码(非基础库),使用`errors.New`或者`errors.Errorf`返回错误。`errors.New`和`errors.Errorf`都会保留堆栈信息。
+```go
+func parseArgs(args []string) error {
+	if len(args) < 3 {
+		return errors.Errorf("not enough arguments,expected at least 3")
+    }
+    //...
+}
+```
+- 如果是调用项目中的函数,通常直接简单的返回。
+```go
+if err != nil {
+	return err
+}
+```
+- 如果和第三方/标准库进行协作,考虑使用`errors.Wrap`或者`errors.Wrapf`保存堆栈信息。直白讲就是最底层错误需要包裹,比如和数据库、rpc、第三方库交互的时候。
+```go
+f,err := os.Open(path)
+if err != nil {
+	return errors.Wrapf(err,"failed to open %q",err)
+}
+```
+- 直接返回错误,而不是每个错误产生的地方都打印日志。
+- 在程序顶层或者工作goroutine顶部(请求入口),使用`%+v`打印详细的堆栈信息。
+- 使用`errors.Cause`获取root error(最底层的error),再和sentinel error进行判断。
+
 ## 标准库errors.Is、errors.As
 
 ### errors.Is
