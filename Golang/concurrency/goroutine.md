@@ -2,7 +2,7 @@
 
 - 并发性应该交给调用者,而不是函数提供者。
 - 调用者应该管控Goroutine的整个生命周期。
-  - When goroutine will terminate?(知道goroutine是么时候退出)
+  - When goroutine will terminate?(知道goroutine什么时候退出)
   - How to notify a goroutine to terminate?(如何让goroutine退出)
 - log.Fatal()只用在main.main()或者init()
 
@@ -123,15 +123,11 @@ func main() {
     done <- serveApp(stop)
   }()
 
-  var stopped bool
   for i := 0; i < cap(done); i++ {
     if err := <-done; err != nil {
       fmt.Printf("error:%v", err)
     }
-    if !stopped {
-      stopped = true
-      close(stop)
-    }
+    close(stop)
   }
 }
 
