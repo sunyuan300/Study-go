@@ -3,7 +3,9 @@
 - 并发性应该交给调用者,而不是函数提供者。
 - 调用者应该管控Goroutine的整个生命周期。
   - When goroutine will terminate?(知道goroutine什么时候退出)
-  - How to notify a goroutine to terminate?(如何让goroutine退出)
+  - How to notify a goroutine to terminate?(如何控制goroutine退出)
+    - channel
+    - context
 - log.Fatal()只用在main.main()或者init()
 
 
