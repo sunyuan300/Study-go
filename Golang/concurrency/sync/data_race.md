@@ -19,64 +19,60 @@ go test -race xx.go
 package main
 
 import (
-    "fmt"
-    "sync"
+	"fmt"
+	"sync"
+	"time"
 )
 
 var wg sync.WaitGroup
 var counter int
 
 func main () {
-    for i:=1; i< 2; i++ {
-        wg.Add(1)
-        go routine(i)
-    }
+	for i:=0; i< 2; i++ {
+		wg.Add(1)
+		go routine()
+	}
+	wg.Wait()
+	fmt.Println("Final counter:",counter)
 }
 
-func routine(id int) {
-    for i:=0; i< 2; i++ {
-        value := counter
-        time.Sleep(1 * time.Nanosecond) // 产生goroutine的上下文切换。
-        value = value+1
-        counter = value
-    }
-    wg.Done()
+func routine() {
+	for i:=0; i< 2; i++ {
+		value := counter
+		time.Sleep(1 * time.Nanosecond) // 产生goroutine的上下文切换。
+		value = value+1
+		counter = value
+	}
+	wg.Done()
 }
+```
+
+```go
+D:\Users\sunyuan\GolandProjects\stdlib-go>go build -race Golang\concurrency\sync\data_race.go
+D:\Users\sunyuan\GolandProjects\stdlib-go>data_race.exe
+==================
+WARNING: DATA RACE
+Write at 0x0000003fee90 by goroutine 8:
+  main.routine()
+      D:/Users/80302367/GolandProjects/stdlib-go/Golang/concurrency/sync/data_race.go:26 +0x77
+
+Previous read at 0x0000003fee90 by goroutine 7:
+  main.routine()
+      D:/Users/80302367/GolandProjects/stdlib-go/Golang/concurrency/sync/data_race.go:23 +0x4e
+
+Goroutine 8 (running) created at:
+  main.main()
+      D:/Users/80302367/GolandProjects/stdlib-go/Golang/concurrency/sync/data_race.go:15 +0x6f
+
+Goroutine 7 (running) created at:
+  main.main()
+      D:/Users/80302367/GolandProjects/stdlib-go/Golang/concurrency/sync/data_race.go:15 +0x6f
+==================
+Final counter: 2
+Found 1 data race(s)
 ```
 
 最终的输出结果2、3、4都有可能。
-
-## 试图通过原子赋值来解决
-```go
-package main
-
-import (
-    "fmt"
-    "sync"
-)
-
-var wg sync.WaitGroup
-var counter int
-
-func main () {
-    for i:=1; i< 2; i++ {
-        wg.Add(1)
-        go routine(i)
-    }
-}
-
-func routine(id int) {
-    for i:=0; i< 2; i++ {
-        value := counter
-        time.Sleep(1 * time.Nanosecond) // 产生goroutine的上下文切换。
-        value++
-        counter = value
-    }
-    wg.Done()
-}
-```
-
->实际i++这种操作，在底层对应有三行汇编代码。在这三行汇编代码执行之后，有可能会发生上下文切换。即使程序还在运行，但从技术角度讲，这个bug任然存在。
 
 # data race 配置
 通过设置`GORACE`环境变量，可以达到控制data race的行为。
