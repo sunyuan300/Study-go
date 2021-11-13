@@ -41,6 +41,7 @@ func main() {
 
 两者都有100ms的周期，但由于goroutine1不断请求锁定,可以预期它会更频繁地获得锁定。基于Go 1.8循环10次,得到锁的请求分布结果如下：
 >Lock acquired per goroutine:
+>
 >g1: 7200216
 >
 >g2: 10
