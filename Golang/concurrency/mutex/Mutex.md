@@ -4,7 +4,7 @@
 
 在计算机科学中，资源Starvation是并发计算中遇到的问题，在这种情况下，进程永远无法获得处理其工作所需的资源。Starvation可能是由调度或互斥算法中的错误引起的，但也可能是由资源泄漏引起的，也可能是通过拒绝服务攻击引起的。例如fork轰炸。
 
-# Starvation of Mutex(饥饿互斥锁)
+# Starvation With Mutex(饥饿互斥锁)
 在 Golang 中开发时，Mutex可能会遇到starvation问题，因为它一直尝试获取永远无法获取的锁。在本文中，我们将研究Go1.8的starvation问题，该问题已在Go1.9中解决。
 
 为了说明mutex中的starvation问题，这里以 [Russ Cox关于mutex改进问题](https://github.com/golang/go/issues/13086)的例子为例：
@@ -41,8 +41,9 @@ func main() {
 
 两者都有100ms的周期，但由于goroutine1不断请求锁定,可以预期它会更频繁地获得锁定。基于Go 1.8循环10次,得到锁的请求分布结果如下：
 >Lock acquired per goroutine:
-g1: 7200216
-g2: 10
+>g1: 7200216
+>
+>g2: 10
 
 goroutine1和goroutine2加锁的次数为何相差这么大？
 
