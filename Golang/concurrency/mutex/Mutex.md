@@ -44,7 +44,7 @@ func main() {
 >g1: 7200216
 >g2: 10
 
-goroutine1和goroutine2加锁的次数为何相差这么大？
+goroutine1和goroutine2获取锁的次数为何相差这么大？
 
 ## 原因
 1. goroutine1将获取锁并休眠100ms。当goroutine2尝试获取锁时, 它将被添加到锁的队列(FIFO顺序)，同时将进入等待状态。
