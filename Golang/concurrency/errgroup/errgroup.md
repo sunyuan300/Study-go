@@ -153,4 +153,5 @@ func main() {
 
 # Reference
 [errgroup](https://pkg.go.dev/golang.org/x/sync/errgroup)
+
 [Go并发编程(七) 深入理解 errgroup](https://lailin.xyz/post/go-training-week3-errgroup.html)
