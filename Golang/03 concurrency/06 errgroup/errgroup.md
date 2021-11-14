@@ -17,7 +17,7 @@ func (g *Group) Wait() error
 整个包就一个`Group`结构体。
 
 - 通过`WithContext`可以创建一个带取消的`Group`。
-- 零值`Group`也可以直接使用，但是出错后不会取消其它goroutine。
+- 零值`Group`也可以直接使用，但是出错后不会取消其它goroutine(用于一个goroutine出错，希望其它goroutine继续执行的场景)。
 - `Go`方法传入一个`func() error`函数，内部会启动一个goroutine去处理。
 - `Wait`类似WaitGroup的Wait方法，等待所有的goroutine结束后退出，返回的错误是一个出错的 err。
 
@@ -71,6 +71,8 @@ func (g *Group) Go(f func() error) {
 }
 ```
 `Go`方法其实就类似于 `go` 关键字，会启动一个goroutine，然后利用 `waitgroup` 来控制是否结束，如果有一个非 `nil` 的 error 出现就会保存起来并且如果有 `cancel` 就会调用 `cancel` 取消掉，使 `ctx` 返回。
+
+>注：Go方法启动的goroutine虽然通过WaitGroup托管了goroutine的生命周期，但并为对`panic`做`recover`防御处理。
 
 ## Wait
 ```go
