@@ -82,7 +82,7 @@ type Cond struct {
 func (c *Cond) Wait() {
 	c.checker.check()
 	t := runtime_notifyListAdd(&c.notify)
-	c.L.Unlock()    // 加锁
+	c.L.Unlock()    // 解锁
 	runtime_notifyListWait(&c.notify, t)    // 阻塞等待通知
 	c.L.Lock()  // 加锁
 }

@@ -1,10 +1,8 @@
 # Cond条件变量
 条件变量用来协调那些想要访问共享资源的goroutine，当共享资源的状态发生变化的时候，它可以用来通知被互斥锁阻塞的goroutine。
-
 经常用在多个goroutine等待，一个goroutine通知（事件发生）的场景。如果是一个通知，一个等待，使用互斥锁或channel就能搞定了。
 
-**场景**:
-
+**场景**：
 一个协程在异步地接收数据，其它多个协程必须等待这个协程接收完数据，才能读取到正确的数据。在这种情况下，如果单纯使用channel或互斥锁，只能有一个协程可以等待，并读取到数据，没办法通知其他的协程也读取数据。
 
 这个时候，就需要有个全局的变量来标志第一个协程数据是否接受完毕，剩下的协程，反复检查该变量的值，直到满足要求。或者创建多个 channel，每个协程阻塞在一个 channel 上，由接收数据的协程在数据接收完毕后，逐个通知。总之，需要额外的复杂度来完成这件事。
@@ -40,7 +38,7 @@ type notifyList struct {
 - `func NewCond(l Locker) *Cond`：创建 Cond 实例时，需要关联一个锁。
 - `Broadcast`：唤醒所有陷入休眠的goroutine，若没有陷入休眠的goroutine，也不会报错
 - `Signal`：唤醒队列最前面的Goroutine。
-- `Wait`：将当前goroutine陷入休眠状态，并加入通知队列。Unlock()->***阻塞等待通知(即等待Signal()或Broadcast()的通知)->收到通知***->Lock()
+- `Wait`：将当前goroutine陷入休眠状态，并加入通知队列。Unlock()->***阻塞等待通知(即等待Signal()或Broadcast()的通知)->收到通知***->Lock()。
 
 # Wait
 ```go
@@ -132,9 +130,9 @@ func main() {
 */
 ```
 
-- done:互斥锁需要保护的**条件变量**。
-- read():调用wait()等待*Signal*或*Broadcast*通知,直到条件变量done变为true。
-- write():将done置为true,调用*Broadcast*通知所有等待的goroutine。
+- done：互斥锁需要保护的**条件变量**。
+- read()：调用wait()等待*Signal*或*Broadcast*通知，直到条件变量done变为true。
+- write()：将done置为true,调用*Broadcast*通知所有等待的goroutine。
 
 ## 例子2
 ```go
