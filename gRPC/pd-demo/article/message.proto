@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package article;
+
+option go_package = "github.com/sunyuan300/pd-demo/article";
+
+message Articles {
+    repeated Article articles = 1;
+}
+
+message Article {
+    int64   id = 1;
+    string  title = 2;
+}

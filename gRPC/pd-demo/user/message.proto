@@ -1,0 +1,13 @@
+syntax = "proto3";
+package user;
+option go_package = "github.com/sunyuan300/pd-demo/user";
+
+message UserId {
+    int64 id = 1;
+}
+
+message UserInfo {
+    int64   id = 1;
+    string  name = 2;
+    int32   age = 3;
+}

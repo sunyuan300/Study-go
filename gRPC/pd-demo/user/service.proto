@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package user;
+
+option go_package = "github.com/sunyuan300/pd-demo/user";
+
+import "article/message.proto";
+import "user/message.proto";
+
+
+service User {
+    rpc GetUserInfo(UserId) returns (UserInfo);
+    rpc GetUserFavArticle (UserID) returns (article.Articles.Article);
+}
