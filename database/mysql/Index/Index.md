@@ -55,3 +55,5 @@ MySQL索引按叶子节点存储的是否为完整表数据分为：聚簇索引
 
 # Reference
 [MySQL索引有哪些分类，你真的清楚吗？](https://segmentfault.com/a/1190000037683781)
+
+[B树、B+树](https://segmentfault.com/a/1190000019927682?utm_source=sf-similar-article)
