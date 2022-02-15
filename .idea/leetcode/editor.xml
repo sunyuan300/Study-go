@@ -77,6 +77,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../../leetcode/leetcode/editor/cn/[123]买卖股票的最佳时机 III.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../leetcode/leetcode/editor/cn/doc/content/[123]买卖股票的最佳时机 III.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com123" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/../../leetcode/leetcode/editor/cn/[123]买卖股票的最佳时机 III.go" />
+              <option name="titleSlug" value="best-time-to-buy-and-sell-stock-iii" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../../leetcode/leetcode/editor/cn/[129]求根节点到叶节点数字之和.go">
           <value>
             <LeetcodeEditor>
@@ -414,6 +425,17 @@
               <option name="host" value="leetcode-cn.com" />
               <option name="path" value="$PROJECT_DIR$/../../leetcode/leetcode/editor/cn/[617]合并二叉树.go" />
               <option name="titleSlug" value="merge-two-binary-trees" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../leetcode/leetcode/editor/cn/[647]回文子串.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../leetcode/leetcode/editor/cn/doc/content/[647]回文子串.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com647" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/../../leetcode/leetcode/editor/cn/[647]回文子串.go" />
+              <option name="titleSlug" value="palindromic-substrings" />
             </LeetcodeEditor>
           </value>
         </entry>

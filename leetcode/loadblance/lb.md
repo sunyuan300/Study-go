@@ -42,7 +42,7 @@ func (r *RoundRobinBalance) Next() Server {
 
 # 加权轮询
 ```shell
-http {  
+应用层 {  
     upstream cluster {  
         server 192.168.1.2 weight=5;  
         server 192.168.1.3 weight=3;  
