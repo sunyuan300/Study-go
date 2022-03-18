@@ -919,3 +919,43 @@ cloud-init  conf            jsondiff  jsonpointer  normalizer  redis-check-aof  
 缺点：
 - 需要一定的时间间隔进行操作。
 - fork子进程会占用一定的资源。
+
+
+## AOF(Append Only File)
+>将所有命令都记录到一个文件，恢复的时候重新执行这个文件中的命令。
+
+以日志的形式记录每个写操作，将Redis执行过的所有命令记录下来(读操作不记录)，只许追加文件但不可以修改文件，redis启动之初会d读取该文件重新构建数据。
+==AOF的持久化文件是appendonly.aof。
+
+### AOF测试
+1. 修改配置文件
+```bash
+appendonly yes  #开启AOF
+```
+2. 重启Redis-Server
+
+如果aof文件有错，Redis-Server无法启动，需要使用`redis-check-aof`工具修复该文件。
+```bash
+[root@ecs bin]# redis-check-aof --fix appendonly.aof
+0x              30: Expected \r\n, got: 6276
+AOF analyzed: size=55, ok_up_to=23, ok_up_to_line=12, diff=32
+This will shrink the AOF from 55 bytes, with 32 bytes, to 23 bytes
+Continue? [y/N]: y
+Successfully truncated AOF
+
+# 直接把有问题的数据干掉了......
+```
+
+## 补充
+1. RDB持久化方式能够在指定的时间间隔内对数据进行快照存储。
+2. AOF持久化方式记录每次对服务器的写操作，当服务器重启的时候会重新执行这些命令来恢复原始的数据。
+3. 同时开始两种持久化方式：
+   1. 在这种情况下，当Redis重启的时候会优先载入AOF文件来恢复原始的数据，因为在通常情况下AOF文件保存的数据要比RDB文件保存的数据完整。
+   2. RDB的数据不实时，同时使用两者时，服务器重启也只会找AOF文件，那要不要只使用AOF呢？作者建议不要，因为RDB更适合用于备份数据库(AOF在不断变化不好备份)，而且不会有AOF可能潜在的Bug。
+
+# 发布订阅
+Redis 发布订阅(Pub/Sub)是一种消息通信模式，Redis客户端可以订阅任意数量的频道。
+![](04.png)
+![](05.png)
+
+# 主从复制
