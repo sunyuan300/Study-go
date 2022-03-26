@@ -8,7 +8,7 @@
 # Commit Message规范
 业界使用最多的是Angular规范，该规范定义Commit Message由三部分构成：Header、Body和Footer。
 ```shell
-<type>[optional scope]: <description> #<scope>必须用括号()括起来，<type>[<scope>]后必须紧跟冒号，冒号后必须紧跟2个空格。
+<type>[optional scope]: <description> #<scope>必须用括号()括起来，<type>[<scope>]后必须紧跟冒号，冒号后必须紧跟空格。
 // 空行
 [optional body]
 // 空行
@@ -89,3 +89,13 @@ not allow to user regexps for throw expectations.
 Closes #392
 Breaks foo.bar api, foo.baz should be used instead
 ```
+
+# 合并提交
+合并提交，就是将多个commit合并为一个commit提交。
+
+## git rebase命令介绍
+git rebase最大的作用是重写历史。通过`git rebase -i <commit ID>`命令可以进入交互界面，该界面会列出指定<commit ID>之前的所有commit。
+每个commit之前都有一个操作命令(默认pick)。可以根据实际情况，修改commit前面的命令。
+
+![](03.png)
+![](04.png)
