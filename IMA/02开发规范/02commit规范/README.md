@@ -99,3 +99,122 @@ git rebase最大的作用是重写历史。通过`git rebase -i <commit ID>`命�
 
 ![](03.png)
 ![](04.png)
+
+## git rebase 例子
+1. 基于master分支新建一个分支。
+```shell
+$ git checkout -b feature/user
+Switch to a new branch 'feature/user'
+```
+2. 在新分支上进行开发并提交commit。
+```shell
+$ git log --oneline
+4ee51d6 docs(user): update user/README.md
+176ba5d docs(user): update user/README.md
+5e829f8 docs(user): add README.md for user
+f40929f feat(user): add delete user function
+fc70a21 feat(user): add create user function #(feature/user分支的第一次commit提交)
+# 以下为master分支的提交历史
+7157e9e docs(docs): append test line 'update3' to README.md
+5a26aa2 docs(docs): append test line 'update2' to README.md
+55892fa docs(docs): append test line 'update1' to README.md
+89651d4 docs(doc): add README.md
+```
+3. 将新提交的5个commit合并为一个新的commit。
+```shell
+$ git rebase -i 7157e9e
+```
+进入交互界面，将需要合并的4个commit都执行squash，修改完成后执行`:wq`保存，然后进入`commit message`界面。
+![](05.png)
+
+![](06.png)
+
+4. 检查rebase是否成功。
+```shell
+$ git log --oneline
+d6b17e0 feat(user): add user module with all function implements
+7157e9e docs(docs): append test line 'update3' to README.md
+5a26aa2 docs(docs): append test line 'update2' to README.md
+55892fa docs(docs): append test line 'update1' to README.md
+89651d4 docs(doc): add README.md
+```
+5. 将`feature/user`分支合并到master分支。
+```shell
+$ git checkout master
+$ git merge feature/user
+$ git log --oneline
+d6b17e0 feat(user): add user module with all function implements
+7157e9e docs(docs): append test line 'update3' to README.md
+5a26aa2 docs(docs): append test line 'update2' to README.md
+55892fa docs(docs): append test line 'update1' to README.md
+89651d4 docs(doc): add README.md
+```
+### 注意事项
+- `git rebase -i <commit ID>`这里一定是最旧commit的父commit ID。
+- 需要保证最新的一个commit是`pick`状态。
+
+# 修改Commit Message
+针对不符合规范的commit，我们需要对其进行修改。主要以下两种方法：
+- git commit --amend：修改最近一次commit的message。
+- git rebase -i：修改指定commit的message。
+
+## git commit --amend
+1. 查看当前分支的提交记录。
+```shell
+$ git log --oneline
+418bd4 docs(docs): append test line 'update$i' to README.md
+89651d4 docs(doc): add README.md
+```
+2. 修改最近一次提交的commit message。
+```shell
+$ git commit --amend
+```
+进入交互界面，修改commit message并执行`:wq`保存退出。
+
+![](07.png)
+
+3. 查看是否更新。
+```shell
+$ git log --oneline
+55892fa docs(docs): append test line 'update1' to README.md
+89651d4 docs(doc): add README.md
+```
+
+## git rebase -i
+1. 查看当前分支提交记录。
+```shell
+$ git log --oneline
+1d6289f docs(docs): append test line 'update3' to README.md
+a38f808 docs(docs): append test line 'update$i' to README.md
+55892fa docs(docs): append test line 'update1' to README.md
+89651d4 docs(doc): add README.md
+```
+2. 修改倒数第3次的commit message。
+```shell
+$ git rebase -i 55892fa # 倒数第三次commit的父commit ID
+```
+进入交互界面，使用reword或者r，保留倒数第3次的变更信息，但修改其message，执行`:wq`进行新的交互界面。
+
+![](08.png)
+
+![](09.png)
+
+3. 查看是否更新。
+```shell
+$ git log --oneline
+7157e9e docs(docs): append test line 'update3' to README.md
+5a26aa2 docs(docs): append test line 'update2' to README.md
+55892fa docs(docs): append test line 'update1' to README.md
+89651d4 docs(doc): add README.md
+```
+
+# Commit Message规范自动化
+- 借助`自动化工具`生成符合规范的Commit Message、提交前检查、历史检查。
+- 借助`自动化工具`基于Commit Message生成CHANGELOG和SemVer。
+
+自动化工具：
+- commitizen-go：交互模式，并根据提示生成 Commit Message，然后提交。
+- commit-msg：commit-msg 是个脚本，可以根据需要自己写脚本实现。
+- go-gitlint：检查提交历史中的commit是否符合规范，可用于CI流程。
+- gsemver：语义化版本生成工具。
+- git-chglog：自动生成CHANGELOG。

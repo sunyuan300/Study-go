@@ -5,8 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ef7e38af-70f3-4e30-8f5b-7073cc624343" name="Changes" comment="feat:  commit规范&#10;&#10;添加commit Header、Body、Footer规范">
-      <change afterPath="$PROJECT_DIR$/IMA/02开发规范/02commit规范/03.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IMA/02开发规范/02commit规范/04.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IMA/02开发规范/02commit规范/05.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IMA/02开发规范/02commit规范/06.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IMA/02开发规范/02commit规范/07.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IMA/02开发规范/02commit规范/08.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IMA/02开发规范/02commit规范/09.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/IMA/02开发规范/02commit规范/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/IMA/02开发规范/02commit规范/README.md" afterDir="false" />
     </list>
@@ -26,6 +29,9 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
+  </component>
+  <component name="GoLibraries">
+    <option name="indexEntireGoPath" value="false" />
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Golang/03 concurrency/03 Data Race/data_race.go" root0="FORCE_HIGHLIGHTING" />
@@ -116,10 +122,10 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Go 构建.go build main.go" />
-      <item itemvalue="Go 构建.go build " />
-      <item itemvalue="Go 构建.go build Study-go/test" />
       <item itemvalue="Go 构建.go build Study-go/test (1)" />
+      <item itemvalue="Go 构建.go build Study-go/test" />
+      <item itemvalue="Go 构建.go build " />
+      <item itemvalue="Go 构建.go build main.go" />
       <item itemvalue="Go 构建.go build stdlib_learn/test" />
     </list>
     <recent_temporary>
