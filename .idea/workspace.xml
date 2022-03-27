@@ -5,19 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ef7e38af-70f3-4e30-8f5b-7073cc624343" name="Changes" comment="feat:  commit规范&#10;&#10;添加commit Header、Body、Footer规范">
-      <change afterPath="$PROJECT_DIR$/IMA/02开发规范/03 目录规范/01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IMA/02开发规范/03 目录规范/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IMA/02开发规范/04 协同规范/01.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IMA/02开发规范/04 协同规范/02.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IMA/02开发规范/04 协同规范/03.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IMA/02开发规范/04 协同规范/04.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IMA/02开发规范/04 协同规范/05.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IMA/02开发规范/04 协同规范/06.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IMA/02开发规范/04 协同规范/07.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IMA/02开发规范/04 协同规范/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IMA/02开发规范/02commit规范/01.png" beforeDir="false" afterPath="$PROJECT_DIR$/IMA/02开发规范/02 commit规范/01.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IMA/02开发规范/02commit规范/02.png" beforeDir="false" afterPath="$PROJECT_DIR$/IMA/02开发规范/02 commit规范/02.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IMA/02开发规范/02commit规范/03.png" beforeDir="false" afterPath="$PROJECT_DIR$/IMA/02开发规范/02 commit规范/03.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IMA/02开发规范/02commit规范/04.png" beforeDir="false" afterPath="$PROJECT_DIR$/IMA/02开发规范/02 commit规范/04.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IMA/02开发规范/02commit规范/05.png" beforeDir="false" afterPath="$PROJECT_DIR$/IMA/02开发规范/02 commit规范/05.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IMA/02开发规范/02commit规范/06.png" beforeDir="false" afterPath="$PROJECT_DIR$/IMA/02开发规范/02 commit规范/06.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IMA/02开发规范/02commit规范/07.png" beforeDir="false" afterPath="$PROJECT_DIR$/IMA/02开发规范/02 commit规范/07.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IMA/02开发规范/02commit规范/08.png" beforeDir="false" afterPath="$PROJECT_DIR$/IMA/02开发规范/02 commit规范/08.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IMA/02开发规范/02commit规范/09.png" beforeDir="false" afterPath="$PROJECT_DIR$/IMA/02开发规范/02 commit规范/09.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IMA/02开发规范/02commit规范/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/IMA/02开发规范/02 commit规范/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
