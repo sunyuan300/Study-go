@@ -5,26 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ef7e38af-70f3-4e30-8f5b-7073cc624343" name="Changes" comment="feat:  commit规范&#10;&#10;添加commit Header、Body、Footer规范">
-      <change afterPath="$PROJECT_DIR$/.idea/Study-go.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Golang/dataType/channel/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Golang/dataType/channel/img.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Golang/dataType/interface/img.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Golang/dataType/slice/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Golang/dataType/interface/02.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Golang/dataType/interface/03.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Golang/dataType/interface/04.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Golang/case/blog/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/Golang/dataType/interface/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Golang/case/blog/api/v1/blog.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Golang/case/blog/configs/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Golang/case/blog/go.mod" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Golang/case/blog/third_party/google/api/annotations.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Golang/case/blog/third_party/google/api/http.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Golang/case/blog/third_party/google/api/httpbody.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Golang/case/blog/third_party/google/protobuf/descriptor.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Golang/case/blog/third_party/validate/validate.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Golang/八股文/计算机网络/传输层/01.png" beforeDir="false" afterPath="$PROJECT_DIR$/Golang/计算机网络/传输层/01.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Golang/八股文/计算机网络/传输层/02.png" beforeDir="false" afterPath="$PROJECT_DIR$/Golang/计算机网络/传输层/02.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Golang/八股文/计算机网络/传输层/03.png" beforeDir="false" afterPath="$PROJECT_DIR$/Golang/计算机网络/传输层/03.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Golang/八股文/计算机网络/传输层/http.md" beforeDir="false" afterPath="$PROJECT_DIR$/Golang/计算机网络/传输层/http.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Golang/dataType/interface/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/Golang/dataType/interface/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Golang/dataType/interface/img.png" beforeDir="false" afterPath="$PROJECT_DIR$/Golang/dataType/interface/01.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,24 +56,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultGoTemplateProperty": "Go File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.go.formatter.settings.were.checked": "true",
-    "RunOnceActivity.go.migrated.go.modules.settings": "true",
-    "RunOnceActivity.go.modules.go.list.on.any.changes.was.set": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "go.import.settings.migrated": "true",
-    "go.sdk.automatically.set": "true",
-    "last_opened_file_path": "D:/Code/Study-go",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultGoTemplateProperty&quot;: &quot;Go File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.modules.go.list.on.any.changes.was.set&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
+    &quot;go.sdk.automatically.set&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Code/raft&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Go_Code\src\Study-go\leetcode\binaryTree" />
@@ -100,7 +86,7 @@
       <recent name="D:\Go_Code\src\Study-go\Nosql\redis" />
     </key>
   </component>
-  <component name="RunManager" selected="Go 构建.go build stdlib_learn/test">
+  <component name="RunManager" selected="Go 构建.go build main.go (1)">
     <configuration name="go build Study-go/test (1)" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="stdlib_learn" />
       <working_directory value="$PROJECT_DIR$" />
@@ -117,6 +103,15 @@
       <package value="Study-go/test" />
       <directory value="$PROJECT_DIR$/test" />
       <filePath value="$PROJECT_DIR$/test/main.go" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build main.go (1)" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="Study-go" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="FILE" />
+      <package value="stdlib_learn" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$APPLICATION_CONFIG_DIR$/scratches/main.go" />
       <method v="2" />
     </configuration>
     <configuration name="go build main.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
@@ -137,29 +132,20 @@
       <filePath value="$PROJECT_DIR$/test/main.go" />
       <method v="2" />
     </configuration>
-    <configuration name="go build " type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true">
-      <module name="stdlib_learn" />
-      <working_directory value="$PROJECT_DIR$" />
-      <kind value="DIRECTORY" />
-      <package value="Study-go/test" />
-      <directory value="$PROJECT_DIR$/test" />
-      <filePath value="$PROJECT_DIR$/test/main.go|$PROJECT_DIR$/test/main.go" />
-      <method v="2" />
-    </configuration>
     <list>
+      <item itemvalue="Go 构建.go build main.go (1)" />
       <item itemvalue="Go 构建.go build Study-go/test (1)" />
       <item itemvalue="Go 构建.go build Study-go/test" />
-      <item itemvalue="Go 构建.go build " />
       <item itemvalue="Go 构建.go build main.go" />
       <item itemvalue="Go 构建.go build stdlib_learn/test" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Go 构建.go build main.go (1)" />
         <item itemvalue="Go 构建.go build stdlib_learn/test" />
         <item itemvalue="Go 构建.go build Study-go/test" />
         <item itemvalue="Go 构建.go build Study-go/test (1)" />
         <item itemvalue="Go 构建.go build main.go" />
-        <item itemvalue="Go 构建.go build " />
       </list>
     </recent_temporary>
   </component>
